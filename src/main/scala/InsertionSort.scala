@@ -1,6 +1,16 @@
 object InsertionSort {
-  // TODO immutable insertionSort
-  def insertionSort[A](as: List[A])(sorted: (A, A) => Boolean): List[A] = ???
+  def insertionSort[A](as: List[A])(sorted: (A, A) => Boolean): List[A] = {
+    def insert(as: List[A], a: A): List[A] = as match {
+      case Nil => List(a)
+      case head :: tail => if (sorted(a, head)) a :: as else head :: insert(tail, a)
+    }
+    def foldLeft[A,B](as: List[A], b: B)(f: (B, A) => B): B = as match {
+      case Nil => b
+      case head :: tail => foldLeft(tail, f(b, head))(f)
+    }
+    foldLeft(as, List.empty[A])(insert)
+  }
+
   def insertionSort[A](as: Array[A])(sorted: (A, A) => Boolean): Array[A] = {
     (1 until as.length).foreach { i =>
       var j = i
@@ -14,3 +24,6 @@ object InsertionSort {
     as
   }
 }
+
+8
+3,4,6,7
