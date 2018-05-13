@@ -18,5 +18,18 @@ object SelectionSort {
     }
     f(as)
   }
-  def selectionSort[A](as: Array[A])(sorted: (A, A) => Boolean): Array[A] = ???
+  def selectionSort[A](as: Array[A])(sorted: (A, A) => Boolean): Array[A] = {
+    (0 until as.length - 1).foreach { i =>
+      var index = i
+      (i until as.length).foreach { j =>
+        if (sorted(as(j), as(index))) {
+          index = j
+        }
+      }
+      val temp = as(i)
+      as(i) = as(index)
+      as(index) = temp
+    }
+    as
+  }
 }
