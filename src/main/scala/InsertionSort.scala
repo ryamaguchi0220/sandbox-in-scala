@@ -14,7 +14,7 @@ object InsertionSort {
   def insertionSort[A](as: Array[A])(sorted: (A, A) => Boolean): Array[A] = {
     (1 until as.length).foreach { i =>
       var j = i
-      while(j > 0 && !sorted(as(j - 1), as(j))) {
+      while(j > 0 && sorted(as(j), as(j - 1))) {
         val temp = as(j)
         as(j) = as(j - 1)
         as(j - 1) = temp

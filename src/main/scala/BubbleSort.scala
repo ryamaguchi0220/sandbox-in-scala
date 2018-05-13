@@ -16,7 +16,7 @@ object BubbleSort {
       i <- 0 until as.length - 1
       j <- 0 until as.length - 1 - i
     } {
-      if (!sort(as(j), as(j + 1))) {
+      if (sort(as(j + 1), as(j))) {
         val temp = as(j)
         as(j) = as(j + 1)
         as(j + 1) = temp
