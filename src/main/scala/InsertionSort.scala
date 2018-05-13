@@ -24,6 +24,3 @@ object InsertionSort {
     as
   }
 }
-
-8
-3,4,6,7
